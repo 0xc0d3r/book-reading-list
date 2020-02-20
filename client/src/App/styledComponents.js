@@ -11,3 +11,8 @@ export const ReadingListHeading = styled.h1`
   color: #444;
   text-align: center;
 `;
+
+export const ErrorMessage = styled.span`
+  color: rgb(255, 0, 0);
+  text-align: center;
+`;

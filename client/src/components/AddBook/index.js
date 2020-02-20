@@ -4,6 +4,8 @@ import compose from 'lodash.flowright';
 
 import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../../queries';
 
+import { ErrorMessage } from '../../App/styledComponents';
+
 import {
   Field,
   FieldLabel,
@@ -21,6 +23,11 @@ function AddBook(props) {
   const renderAuthors = () => {
     if (props.getAuthorsQuery.loading) {
       return <option>Loading...</option>;
+    } else if (
+      props.getAuthorsQuery.error &&
+      props.getAuthorsQuery.error.message !== ''
+    ) {
+      return <ErrorMessage>{props.getAuthorsQuery.error.message}</ErrorMessage>;
     }
     return props.getAuthorsQuery.authors.map(author => (
       <option
