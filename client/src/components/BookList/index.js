@@ -1,17 +1,9 @@
 import React from 'react';
-import { gql } from 'apollo-boost';
 import { graphql } from 'react-apollo';
 
-import { BookListContainer, StyledBookList } from './styledComponents';
+import { getBooksQuery } from '../../queries';
 
-const getBooksQuery = gql`
-  {
-    books {
-      name
-      id
-    }
-  }
-`;
+import { BookListContainer, StyledBookList } from './styledComponents';
 
 function BookList(props) {
   const renderBooks = () => {
