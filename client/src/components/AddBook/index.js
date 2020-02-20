@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { graphql } from 'react-apollo';
 import compose from 'lodash.flowright';
 
-import { getAuthorsQuery, addBookMutation } from '../../queries';
+import { getAuthorsQuery, addBookMutation, getBooksQuery } from '../../queries';
 
 import {
   Field,
@@ -36,24 +36,40 @@ function AddBook(props) {
         name,
         genre,
         authorId
-      }
+      },
+      refetchQueries: [{ query: getBooksQuery }]
     });
+    setName('');
+    setGenre('');
+    setAuthorId('');
   };
 
   return (
     <StyledForm onSubmit={addBook}>
       <Field>
         <FieldLabel>Name</FieldLabel>
-        <StyledInput type='text' onChange={e => setName(e.target.value)} />
+        <StyledInput
+          type='text'
+          onChange={e => setName(e.target.value)}
+          value={name}
+        />
       </Field>
       <Field>
         <FieldLabel>Genre</FieldLabel>
-        <StyledInput type='text' onChange={e => setGenre(e.target.value)} />
+
+        <StyledInput
+          type='text'
+          onChange={e => setGenre(e.target.value)}
+          value={genre}
+        />
       </Field>
       <Field>
         <FieldLabel>Author</FieldLabel>
-        <StyledDropdown onChange={e => setAuthorId(e.target.value)}>
-          <option>Select author</option>
+        <StyledDropdown
+          onChange={e => setAuthorId(e.target.value)}
+          value={authorId}
+        >
+          <option value={authorId}>Select author</option>
           {renderAuthors()}
         </StyledDropdown>
       </Field>
