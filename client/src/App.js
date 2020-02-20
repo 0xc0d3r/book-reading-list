@@ -5,6 +5,7 @@ import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from 'react-apollo';
 
 import BookList from './components/BookList';
+import AddBook from './components/AddBook';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -22,6 +23,7 @@ function App() {
       <div id='main'>
         <h1>Anesh's Reading List</h1>
         <BookList />
+        <AddBook />
       </div>
     </ApolloProvider>
   );
