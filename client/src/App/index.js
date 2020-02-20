@@ -4,8 +4,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloProvider } from 'react-apollo';
 
-import BookList from './components/BookList';
-import AddBook from './components/AddBook';
+import BookList from '../components/BookList';
+import AddBook from '../components/AddBook';
+
+import { AppContainer, ReadingListHeading } from './styledComponents';
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
@@ -20,11 +22,11 @@ const apolloClient = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={apolloClient}>
-      <div id='main'>
-        <h1>Anesh's Reading List</h1>
+      <AppContainer>
+        <ReadingListHeading>Anesh's Reading List</ReadingListHeading>
         <BookList />
         <AddBook />
-      </div>
+      </AppContainer>
     </ApolloProvider>
   );
 }

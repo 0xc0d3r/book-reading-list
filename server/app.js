@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 mongoose.connect(
-  'mongodb+srv://0xc0d3r:Anesh123@cluster0-lg16l.mongodb.net/test?retryWrites=true&w=majority',
+  'mongodb+srv://<user>:<password>@cluster0-lg16l.mongodb.net/test?retryWrites=true&w=majority',
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.connection.once('open', () => {

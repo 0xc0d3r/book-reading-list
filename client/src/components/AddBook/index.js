@@ -23,7 +23,11 @@ function AddBook(props) {
       return <option>Loading...</option>;
     }
     return props.getAuthorsQuery.authors.map(author => (
-      <option key={author.id} value={author.id}>
+      <option
+        key={author.id}
+        value={author.id}
+        selected={author.id === authorId}
+      >
         {author.name}
       </option>
     ));
@@ -65,15 +69,12 @@ function AddBook(props) {
       </Field>
       <Field>
         <FieldLabel>Author</FieldLabel>
-        <StyledDropdown
-          onChange={e => setAuthorId(e.target.value)}
-          value={authorId}
-        >
+        <StyledDropdown onChange={e => setAuthorId(e.target.value)}>
           <option value={authorId}>Select author</option>
           {renderAuthors()}
         </StyledDropdown>
       </Field>
-      <AddButton>Add</AddButton>
+      <AddButton>+</AddButton>
     </StyledForm>
   );
 }
